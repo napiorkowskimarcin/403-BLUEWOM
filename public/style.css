@@ -1,0 +1,40 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  background-color: #293653;
+}
+
+/* HEADER - views/partials/_navbar.hbs */
+nav {
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+.navbar {
+  line-height: 60px;
+  background-color: #fff;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.btn-nav {
+  margin-left: 0%;
+}
+.ml-auto {
+  margin-right: 0%;
+}
+
+#card-add-currency {
+  position: fixed;
+  left: 25px;
+  right: 120px;
+  padding: 10px;
+}
+
+#card-add-currency input {
+  width: 70%;
+  margin-left: 10px;
+}
