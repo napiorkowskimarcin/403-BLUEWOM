@@ -1,7 +1,7 @@
 //MAIN VARIABLES, LOAD BUTTON (MAY BE WITHOUT BEEING ASSIGNED, BUT IN THAT WAY IT IS CLEAR, I BELIEVE) AND INPUT
 const btnAdd = document.getElementById("btnAdd");
 let currencyInput = document.getElementById("currencyName");
-const API_URL = "http://api.nbp.pl/api/exchangerates/tables/a/";
+const API_URL = "https://api.nbp.pl/api/exchangerates/tables/a/";
 //STARTING - EMPTY ARRAY FOR KEEPING ALL OF THE RESULTS
 let arrayOfCurrencies = [];
 
