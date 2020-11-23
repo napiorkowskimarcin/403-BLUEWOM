@@ -1,12 +1,26 @@
-//MAIN VARIABLES, LOAD BUTTON (MAY BE WITHOUT BEEING ASSIGNED, BUT IN THAT WAY IT IS CLEAR, I BELIEVE)
+//MAIN VARIABLES, LOAD BUTTON (MAY BE WITHOUT BEEING ASSIGNED, BUT IN THAT WAY IT IS CLEAR, I BELIEVE) AND INPUT
 const btnAdd = document.getElementById("btnAdd");
 let currencyInput = document.getElementById("currencyName");
 const API_URL = "http://api.nbp.pl/api/exchangerates/tables/a/";
+//STARTING - EMPTY ARRAY FOR KEEPING ALL OF THE RESULTS
+let arrayOfCurrencies = [];
 
 //CREATE A FLAG - FETCH OR NOT TO FETCH :-)
 let firstLoad = true;
 //REMOVE ELEMENT FROM THE TABLE
 rmElement = (e) => {
+  elementToRemove = e.target.parentNode.parentNode.querySelector(".codeID")
+    .textContent;
+
+  //find index of element to remove
+  let indexToRemove = arrayOfCurrencies.findIndex(
+    (element) => element === elementToRemove
+  );
+
+  //remove currency from the list
+  arrayOfCurrencies.splice(indexToRemove, 1);
+
+  //remove HTML element
   e.target.parentNode.parentNode.remove();
 };
 
@@ -25,7 +39,7 @@ async function addRate() {
   }
   //ENSURE INPUT STRING IS UPPERCASE AS IN API.CODE
   let inputValue = currencyInput.value.toUpperCase();
-  //BY ELEMENT BY API.CODE
+  // ELEMENT BY API.CODE
   const findElement = currencyArray.find((item) => item.code === inputValue);
 
   //CHECK IF ELEMENT IS MATCHING ANY POSITION ON THE NBP LIST
@@ -35,6 +49,15 @@ async function addRate() {
       `Check the code that you passed in, please. There is no element like '${inputValue}' in the supported list of NBP. Please check the list of correct codes`
     );
   }
+
+  //UPDATE ARRAY OF SELECTED CURRENCIES
+
+  const checkIfAlreadyUse = arrayOfCurrencies.includes(inputValue);
+  if (checkIfAlreadyUse) {
+    currencyInput.value = "";
+    return alert("You have already checked rate of that currency");
+  }
+  arrayOfCurrencies.push(inputValue);
 
   //CREATE VARIABLES FOR DATA PARAMETERS
   let appendName = findElement.currency;
@@ -52,6 +75,7 @@ async function addRate() {
   tdAppendName.textContent = appendName;
   let tdAppendCode = document.createElement("td");
   tdAppendCode.textContent = appendCode;
+  tdAppendCode.classList.add("codeID");
   let tdAppendRate = document.createElement("td");
   tdAppendRate.textContent = appendRate;
   let tdBtnRemove = document.createElement("td");
