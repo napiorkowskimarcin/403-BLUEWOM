@@ -5,7 +5,11 @@
   font-family: "Roboto", sans-serif;
 }
 body {
-  background-color: #293653;
+  background-color: #4c4f57;
+}
+
+.container-md {
+  background-color: #fff;
 }
 
 /* HEADER - views/partials/_navbar.hbs */
@@ -36,5 +40,4 @@ nav {
 
 #card-add-currency input {
   width: 70%;
-  margin-left: 10px;
 }

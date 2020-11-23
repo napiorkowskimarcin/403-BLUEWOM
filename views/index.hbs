@@ -1,21 +1,17 @@
-
+{{#if array}}
 <div>
-    <p class="text-white">You need to be logged in to see your application</p>
+    <p class="text-white">Here are your currencies: </p>
 </div>
-
+{{/if}}
 {{!--  --}}
-
 <div class="card" id="card-add-currency" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">ADD CURRENCY</h5>
-    <p class="card-text">You need to place only a currency that matches an official NBP code</p>
   </div>
-  <form action="POST">
-  <ul class="list-group list-group-flush">
-    <input type="text">
-  </ul>
+  
   <div class="card-body">
-    <button type="submit" class="btn btn-primary">GET RATE</button>
+    <input id="currencyName" type="text" >
+    <button class="btn btn-primary" id="btnAdd">Add</button>
   </div>
-  </form>
+  
 </div>

@@ -7,6 +7,7 @@ const config = require("./config/config");
 const bodyParser = require("body-parser");
 const path = require("path");
 
+const PORT = process.env.PORT || 3000;
 //load mongoose
 mongoose.connect(config.db, {
   useNewUrlParser: true,
