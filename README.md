@@ -12,3 +12,4 @@
 - check if code user want to see is already shown
 - add a flag to check if fetching data is necessary
 - uppercase all of the input
+- erease the data with START APP button.
