@@ -1,0 +1,26 @@
+
+<div>
+    <p class="text-white">Here is the list of all currencies: </p>
+</div>
+
+{{!--  --}}
+
+
+{{!--  --}}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">NAME</th>
+      <th scope="col">CODE</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      {{#each data}}
+    <tr>
+        <td> {{currency}} </td>
+        <td> {{code}} </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

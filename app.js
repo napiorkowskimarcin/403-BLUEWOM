@@ -35,6 +35,7 @@ app.set("view engine", ".hbs");
 app.use(morgan("dev"));
 
 //routes
+app.use("/list", require("./routes/list"));
 app.use("/", require("./routes/index"));
 
 app.listen(PORT, () => console.log(`Server has started on: ${PORT}`));
