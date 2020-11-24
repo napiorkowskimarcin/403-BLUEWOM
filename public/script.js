@@ -37,7 +37,6 @@ async function addRate() {
   if (dataStorage && firstLoad) {
     currencyArray = JSON.parse(dataStorage);
     firstLoad = false;
-    console.log("localStorage");
   }
   //CHECK IF FIRST LOAD IS TRUE - TO FETCH DATA
   else if (firstLoad) {
@@ -46,9 +45,6 @@ async function addRate() {
     currencyArray = currencyArray[0].rates;
     firstLoad = false;
     localStorage.setItem("ApiNBP", JSON.stringify(currencyArray));
-    console.log("ApiNBP");
-  } else {
-    console.log("current session");
   }
   //CHECK IF USER HAS PUT A VALUE
   if (!currencyInput.value) {
