@@ -40,6 +40,11 @@ nav {
   left: 10px;
 }
 
+.space-left {
+  margin-left: 35px;
+}
+
+/* -----------------------------------MEDIA-------------------------  */
 @media (max-width: 1670px) {
   .table {
     margin-top: 220px;

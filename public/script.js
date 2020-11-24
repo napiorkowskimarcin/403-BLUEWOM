@@ -4,9 +4,15 @@ let currencyInput = document.getElementById("currencyName");
 const API_URL = "https://api.nbp.pl/api/exchangerates/tables/a/";
 //STARTING - EMPTY ARRAY FOR KEEPING ALL OF THE RESULTS
 let arrayOfCurrencies = [];
-
 //CREATE A FLAG - FETCH OR NOT TO FETCH :-)
 let firstLoad = true;
+
+//CLEAR STORAGE BUTTON - TO REFRESH DATA
+const btnClear = document.getElementById("btnClear");
+
+//CLEAR STORAGE FUNCTION
+storageClear = () => localStorage.removeItem("ApiNBP");
+
 //REMOVE ELEMENT FROM THE TABLE
 rmElement = (e) => {
   elementToRemove = e.target.parentNode.parentNode.querySelector(".codeID")
@@ -26,12 +32,23 @@ rmElement = (e) => {
 
 //MAIN FUNCTION - FETCH, FIND ELEMENT, APPEND DATA ON TABLE.
 async function addRate() {
+  //CHECK LOCAL STORAGE TO AVOID DATA FETCH
+  let dataStorage = localStorage.getItem("ApiNBP");
+  if (dataStorage && firstLoad) {
+    currencyArray = JSON.parse(dataStorage);
+    firstLoad = false;
+    console.log("localStorage");
+  }
   //CHECK IF FIRST LOAD IS TRUE - TO FETCH DATA
-  if (firstLoad) {
+  else if (firstLoad) {
     currencyArray = await fetch(API_URL);
     currencyArray = await currencyArray.json();
     currencyArray = currencyArray[0].rates;
     firstLoad = false;
+    localStorage.setItem("ApiNBP", JSON.stringify(currencyArray));
+    console.log("ApiNBP");
+  } else {
+    console.log("current session");
   }
   //CHECK IF USER HAS PUT A VALUE
   if (!currencyInput.value) {
@@ -96,5 +113,6 @@ async function addRate() {
   //ATTACH FUNCTION TO REMOVE ELEMENT TO THE BUTTON
   trAppend.querySelector("button").addEventListener("click", rmElement);
 }
-
+//EVENT LISTENERS FOR 'CLICK'
 btnAdd.addEventListener("click", addRate);
+btnClear.addEventListener("click", storageClear);
