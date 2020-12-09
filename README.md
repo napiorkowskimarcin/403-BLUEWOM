@@ -1,7 +1,7 @@
 # BLUEWOM - HOMEWORK
 
 ## Instruction:
-
+- Deployed to heroku: https://bluewom-mn.herokuapp.com/
 - At first, check the 'Supported list of NBP', plase take a note that reference to the currency is a three-letter code - listed as a 'CODE'.
 - To see the rate of favourite currency put the CODE from the list of NBP to the 'ADD CURRENCY'
 - App use your local storage to keep all the informations about currencies, and prevent your PC from downloading them again. It saves your transfer.
